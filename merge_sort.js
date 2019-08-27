@@ -30,4 +30,4 @@ function mergeSort(list) {
   return merge(left, right);
 }
 
-console.log(mergeSort([1, 4, 7, 2, 3, 67, 34, 12, 53, 67, 98, 13, 54]));
+console.log(mergeSort([1, 4, 7, 2, 3]));
