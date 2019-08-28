@@ -1,16 +1,12 @@
 function pivot(list, start = 0, end = list.length + 1) {
-  let pivot = list[start];
   let swapIndex = start;
   for (let i = start + 1; i < list.length; i++) {
-    if (pivot > list[i]) {
+    if (list[start] > list[i]) {
       swapIndex++;
-      let temp = list[i];
-      list[i] = list[swapIndex];
-      list[swapIndex] = temp;
+      [list[i], list[swapIndex]] = [list[swapIndex], list[i]];
     }
   }
-  list[start] = list[swapIndex];
-  list[swapIndex] = pivot;
+  [list[start], list[swapIndex]] = [list[swapIndex], list[start]];
   return swapIndex;
 }
 
@@ -25,4 +21,4 @@ function quickSort(list, left = 0, right = list.length - 1) {
   return list;
 }
 
-console.log(quickSort([100, -3, 2, 4, 6, 9, 1, 2, 5, 3, 23]));
+console.log(quickSort([100, -3, 2, 4, 6, 9, 1, 2, 5, 3, 23, -23]));

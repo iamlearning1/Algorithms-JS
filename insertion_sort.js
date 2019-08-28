@@ -1,10 +1,8 @@
 function insertionSort(list) {
   for (let i = 1; i < list.length; i++) {
-    let currentVal = list[i];
     for (let j = i - 1; j >= 0; j--) {
-      if (list[j] > currentVal) {
-        list[j + 1] = list[j];
-        list[j] = currentVal;
+      if (list[j] > list[i]) {
+        [list[j + 1], list[j]] = [list[j], list[j + 1]];
       }
     }
   }

@@ -1,7 +1,7 @@
 function linearSearch(list, item) {
   let index = -1;
   for (const num of list) {
-    index = index + 1;
+    index += 1;
     if (num === item) {
       return index;
     }
