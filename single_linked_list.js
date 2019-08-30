@@ -75,7 +75,7 @@ class SinglyLinkedList {
   }
 
   get(index) {
-    if (index < 0 || index > this.length) return undefined;
+    if (index < 0 || index > this.length) return false;
     let counter = 0;
     let current = this.head;
     while (counter < index) {
@@ -87,7 +87,9 @@ class SinglyLinkedList {
 
   set(index, val) {
     const node = this.get(index);
-    console.log(node);
+    if (!node) return false;
+    node.val = val;
+    return true;
   }
 }
 
@@ -105,5 +107,5 @@ list.push("!");
 // list.pop();
 // list.pop();
 // console.log(list.get(0));
-list.set(2, "100");
-// console.log(list);
+console.log(list.set(-1, "100"));
+console.log(list);
