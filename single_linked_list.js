@@ -60,16 +60,33 @@ class SinglyLinkedList {
     }
     return current;
   }
+
+  unShift(val) {
+    const newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
 }
 
 const list = new SinglyLinkedList();
-list.push("Hello");
-list.push("World");
-list.push("!");
+// list.push("Hello");
+// list.push("World");
+// list.push("!");
 // list.shift();
 // list.shift();
 // list.shift();
-// list.push("Hi");
-// list.pop();
+list.unShift(100);
+list.unShift(200);
+list.push("Hi");
+list.pop();
+list.pop();
+list.pop();
 
 console.log(list);
