@@ -47,7 +47,7 @@ class SinglyLinkedList {
       this.head = null;
       this.tail = null;
     }
-    return current.val;
+    return current;
   }
 
   shift() {
@@ -106,19 +106,32 @@ class SinglyLinkedList {
     this.length++;
     return true;
   }
+
+  remove(index) {
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === this.length - 1) return !!this.pop();
+    if (index === 0) return !!this.shift();
+
+    let previous = this.get(index - 1);
+    const removedNode = previous.next;
+    previous.next = removedNode.next;
+    this.length--;
+    return removedNode;
+  }
 }
 
 const list = new SinglyLinkedList();
 list.push("Hello");
 list.push("World");
 list.push("!");
-list.unShift(100);
-list.unShift(200);
-// list.push("Hi");
+list.push("Hi");
 // list.pop();
 // list.pop();
 // list.pop();
 // console.log(list.get(0));
-console.log(list.insert(5, "Hey"));
+// console.log(list.insert(5, "Hey"));
 // console.log(list.set(-1, "100"));
+console.log(list.remove(100));
+// console.log(list.remove(1));
+// console.log(list.remove(0));
 console.log(JSON.stringify(list));
