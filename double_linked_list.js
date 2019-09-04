@@ -69,14 +69,39 @@ class DoubleLinkedList {
       this.head = node;
       this.tail = node;
     } else {
-      node.next = this.head;
       this.head.prev = node;
+      node.next = this.head;
       this.head = node;
     }
 
     this.length++;
 
     return this;
+  }
+
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+
+    let node;
+    let counter;
+
+    if (index <= this.length / 2) {
+      counter = 0;
+      node = this.head;
+      while (counter < index) {
+        node = node.next;
+        counter++;
+      }
+    } else {
+      counter = this.length - 1;
+      node = this.tail;
+      while (counter > index) {
+        current = node.prev;
+        counter--;
+      }
+    }
+
+    return node;
   }
 }
 
@@ -85,11 +110,8 @@ const doubleLinkedList = new DoubleLinkedList();
 doubleLinkedList.push("hello");
 doubleLinkedList.push("world");
 doubleLinkedList.push("!");
-doubleLinkedList.pop();
-doubleLinkedList.pop();
-doubleLinkedList.pop();
+// doubleLinkedList.pop();
 // doubleLinkedList.shift();
 doubleLinkedList.unshift("There");
-doubleLinkedList.unshift("Hi");
 
-console.log(doubleLinkedList);
+console.log(doubleLinkedList.get(3));
