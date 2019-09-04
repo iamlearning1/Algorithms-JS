@@ -103,6 +103,13 @@ class DoubleLinkedList {
 
     return node;
   }
+
+  set(index, val) {
+    const current = this.get(index);
+    if (!current) return false;
+    current.val = val;
+    return true;
+  }
 }
 
 const doubleLinkedList = new DoubleLinkedList();
@@ -112,6 +119,7 @@ doubleLinkedList.push("world");
 doubleLinkedList.push("!");
 // doubleLinkedList.pop();
 // doubleLinkedList.shift();
-doubleLinkedList.unshift("There");
+// doubleLinkedList.unshift("There");
+// doubleLinkedList.set(3, "Hi");
 
-console.log(doubleLinkedList.get(3));
+console.log(doubleLinkedList);
