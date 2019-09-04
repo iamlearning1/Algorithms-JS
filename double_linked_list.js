@@ -110,6 +110,25 @@ class DoubleLinkedList {
     current.val = val;
     return true;
   }
+
+  insert(index, val) {
+    if (index < 0 || index > this.length) return false;
+    if (index === 0) return !!this.unshift(val);
+    if (index === this.length) return !!this.push(val);
+
+    const node = new Node(val);
+    const current = this.get(index - 1);
+    const next = current.next;
+
+    node.prev = current;
+    node.next = next;
+    next.prev = node;
+    current.next = node;
+
+    this.length++;
+
+    return true;
+  }
 }
 
 const doubleLinkedList = new DoubleLinkedList();
@@ -119,7 +138,8 @@ doubleLinkedList.push("world");
 doubleLinkedList.push("!");
 // doubleLinkedList.pop();
 // doubleLinkedList.shift();
-// doubleLinkedList.unshift("There");
+doubleLinkedList.unshift("There");
 // doubleLinkedList.set(3, "Hi");
+doubleLinkedList.insert(1, "Hi");
 
 console.log(doubleLinkedList);
