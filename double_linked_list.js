@@ -129,6 +129,22 @@ class DoubleLinkedList {
 
     return true;
   }
+
+  remove(index) {
+    if (index < 0 || index > this.length) return false;
+    if (index === 0) return !!this.shift();
+    if (index === this.length - 1) return !!this.pop();
+
+    const current = this.get(index);
+
+    current.prev.next = current.next;
+    current.next.prev = current.prev;
+    current.next = null;
+    current.prev = null;
+
+    this.length--;
+    return current;
+  }
 }
 
 const doubleLinkedList = new DoubleLinkedList();
@@ -138,8 +154,9 @@ doubleLinkedList.push("world");
 doubleLinkedList.push("!");
 // doubleLinkedList.pop();
 // doubleLinkedList.shift();
-doubleLinkedList.unshift("There");
+// doubleLinkedList.unshift("There");
 // doubleLinkedList.set(3, "Hi");
-doubleLinkedList.insert(1, "Hi");
+// doubleLinkedList.insert(1, "Hi");
+doubleLinkedList.remove(1);
 
 console.log(doubleLinkedList);
