@@ -39,9 +39,44 @@ class DoubleLinkedList {
       this.tail.next = null;
     }
 
-    this.length -= 1;
+    this.length--;
     node.prev = null;
+
     return node;
+  }
+
+  shift() {
+    if (this.length === 0) return undefined;
+    const node = this.head;
+
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = this.head.next;
+      this.head.prev = null;
+      node.next = null;
+    }
+    this.length--;
+
+    return node;
+  }
+
+  unshift(val) {
+    const node = new Node(val);
+
+    if (this.length === 0) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      node.next = this.head;
+      this.head.prev = node;
+      this.head = node;
+    }
+
+    this.length++;
+
+    return this;
   }
 }
 
@@ -51,5 +86,10 @@ doubleLinkedList.push("hello");
 doubleLinkedList.push("world");
 doubleLinkedList.push("!");
 doubleLinkedList.pop();
+doubleLinkedList.pop();
+doubleLinkedList.pop();
+// doubleLinkedList.shift();
+doubleLinkedList.unshift("There");
+doubleLinkedList.unshift("Hi");
 
 console.log(doubleLinkedList);
