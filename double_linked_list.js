@@ -145,6 +145,22 @@ class DoubleLinkedList {
     this.length--;
     return current;
   }
+  
+  reverse() {
+    if (this.length === 0) return null;
+
+    let current = this.head;
+    let newHead;
+
+    while (current) {
+      const previous = current.prev;
+      current.prev = current.next;
+      current.next = previous;
+      newHead = current;
+      current = current.prev;
+    }
+    return newHead;
+  }
 }
 
 const doubleLinkedList = new DoubleLinkedList();
@@ -158,5 +174,5 @@ doubleLinkedList.push("!");
 // doubleLinkedList.set(3, "Hi");
 // doubleLinkedList.insert(1, "Hi");
 doubleLinkedList.remove(1);
-
+doubleLinkedList.reverse();
 console.log(doubleLinkedList);
