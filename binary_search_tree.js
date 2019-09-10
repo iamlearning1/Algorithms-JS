@@ -39,6 +39,27 @@ class BST {
       }
     }
   }
+
+  search(value) {
+    if (!this.root) return false;
+
+    let current = this.root;
+    let found = false;
+
+    if (current.value === value) return true;
+
+    while (!found && current) {
+      if (value > current.value) {
+        current = current.right;
+      } else if (value < current.value) {
+        current = current.left;
+      } else {
+        return true;
+      }
+    }
+
+    return false;
+  }
 }
 
 const bst = new BST();
@@ -51,4 +72,6 @@ bst.insert(7);
 bst.insert(11);
 bst.insert(16);
 
-console.log(JSON.stringify(bst));
+console.log(bst.search(124));
+
+// console.log(JSON.stringify(bst));
