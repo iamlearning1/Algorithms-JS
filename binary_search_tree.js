@@ -100,6 +100,18 @@ class BST {
     traverse(this.root);
     return queue;
   }
+
+  DFSInOrder() {
+    const queue = [];
+
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      queue.push(node.value);
+      if (node.right) traverse(node.right);
+    }
+    traverse(this.root);
+    return queue;
+  }
 }
 
 const bst = new BST();
@@ -117,6 +129,7 @@ bst.insert(16);
 // console.log(bst.BFS());
 console.log(bst.DFSPreOrder());
 console.log(bst.DFSPostOrder());
+console.log(bst.DFSInOrder());
 
 /*
                         10
