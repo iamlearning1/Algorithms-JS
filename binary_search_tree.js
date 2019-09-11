@@ -75,6 +75,18 @@ class BST {
     }
     return data;
   }
+
+  DFSPreOrder() {
+    const queue = [];
+    function traverse(node) {
+      queue.push(node.value);
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+    }
+
+    traverse(this.root);
+    return queue;
+  }
 }
 
 const bst = new BST();
@@ -90,3 +102,4 @@ bst.insert(16);
 // console.log(bst.search(124));
 
 console.log(bst.BFS());
+console.log(bst.DFSPreOrder());
