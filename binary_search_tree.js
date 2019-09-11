@@ -60,6 +60,21 @@ class BST {
 
     return false;
   }
+
+  BFS() {
+    const queue = [];
+    const data = [];
+    let node = this.root;
+
+    queue.push(node);
+    while (queue.length !== 0) {
+      node = queue.shift();
+      data.push(node.value);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+    return data;
+  }
 }
 
 const bst = new BST();
@@ -72,6 +87,6 @@ bst.insert(7);
 bst.insert(11);
 bst.insert(16);
 
-console.log(bst.search(124));
+// console.log(bst.search(124));
 
-// console.log(JSON.stringify(bst));
+console.log(bst.BFS());
