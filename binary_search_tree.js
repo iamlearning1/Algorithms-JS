@@ -87,6 +87,19 @@ class BST {
     traverse(this.root);
     return queue;
   }
+
+  DFSPostOrder() {
+    const queue = [];
+
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      queue.push(node.value);
+    }
+
+    traverse(this.root);
+    return queue;
+  }
 }
 
 const bst = new BST();
@@ -101,5 +114,12 @@ bst.insert(16);
 
 // console.log(bst.search(124));
 
-console.log(bst.BFS());
+// console.log(bst.BFS());
 console.log(bst.DFSPreOrder());
+console.log(bst.DFSPostOrder());
+
+/*
+                        10
+                  5           13
+              2       7   11      16
+*/
