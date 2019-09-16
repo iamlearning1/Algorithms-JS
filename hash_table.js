@@ -34,7 +34,18 @@ class Hash {
         item.forEach(it => arr.push(it[1]));
       }
     });
-    return new Set([...arr]);
+    return [...new Set([...arr])];
+  }
+
+  keys() {
+    const arr = [];
+    this.keyMap.forEach(item => {
+      if (item.length === 1) arr.push(item[0][0]);
+      else {
+        item.forEach(it => arr.push(it[0]));
+      }
+    });
+    return [...new Set([...arr])];
   }
 }
 
@@ -54,5 +65,6 @@ hash.set("another_hobby", "more learning");
 // console.log(hash.get("hobby"));
 // console.log(hash.get("another_hobby"));
 
-console.log(hash.values());
+// console.log(hash.values());
+console.log(hash.keys());
 // console.log(hash);
